@@ -1,3 +1,4 @@
+import 'package:expense_app/txCard.dart';
 import 'package:flutter/material.dart';
 import './transaction.dart';
 
@@ -30,7 +31,11 @@ class HomePage extends StatelessWidget {
               child: Text("Transactions"),
             ),
           ),
-          Column()
+          Column(
+            children: transactions.map((e) {
+              return TXCard(e);
+            }).toList(),
+          )
         ],
       ),
     );

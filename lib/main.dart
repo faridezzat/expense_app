@@ -12,6 +12,9 @@ class app extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: HomePage(),
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+      ),
     );
   }
 }

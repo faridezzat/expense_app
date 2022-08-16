@@ -22,7 +22,7 @@ class TXCard extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 border: Border.all(
                   style: BorderStyle.solid,
-                  color: Colors.amber,
+                  color: Theme.of(context).primaryColor,
                 )),
             width: 60,
             child: Text(

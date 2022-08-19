@@ -35,9 +35,7 @@ class TXCard extends StatelessWidget {
               Text(
                 transaction.title,
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.titleSmall,
               ),
               Text(
                 DateFormat('yyyy-MM-dd').format(transaction.date),

@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   void addTransaction(String title, double amount) {
     setState(() {
       this.transactions.add(Transaction(
-          id: this.transactions.last.id + 1,
+          id: transactions.isEmpty ? 1 : this.transactions.last.id + 1,
           title: title,
           date: DateTime.now(),
           amount: amount));
@@ -30,14 +30,7 @@ class _HomePageState extends State<HomePage> {
     Navigator.of(context).pop();
   }
 
-  var transactions = [
-    Transaction(title: " Title 1", date: DateTime.now(), amount: 50, id: 1),
-    Transaction(title: " Title 2", date: DateTime.now(), amount: 60, id: 2),
-    Transaction(title: " Title 3", date: DateTime.now(), amount: 70, id: 3),
-    Transaction(title: " Title 4", date: DateTime.now(), amount: 80, id: 4),
-    Transaction(title: " Title 5", date: DateTime.now(), amount: 90, id: 5),
-    Transaction(title: " Title 6", date: DateTime.now(), amount: 100, id: 6),
-  ];
+  List<Transaction> transactions = [];
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +56,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          Chart(),
+          Chart(transactions),
           //  NewTX(addTransaction, transactions),
           TXS(transactions),
         ],

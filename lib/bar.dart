@@ -13,11 +13,16 @@ class Bar extends StatelessWidget {
   Widget build(BuildContext context) {
     double amount = data['amount'];
     double fraction = (total == 0) ? 0 : amount / total;
-    return Flexible(
-      fit: FlexFit.tight,
+    return Expanded(
       child: Column(
         children: [
-          FittedBox(child: Text('\$${data['amount']}')),
+          Container(
+              height: 20,
+              child: FittedBox(
+                child: Text(
+                  '\$${data['amount']}',
+                ),
+              )),
           SizedBox(
             height: 4,
           ),

@@ -13,49 +13,52 @@ class Bar extends StatelessWidget {
   Widget build(BuildContext context) {
     double amount = data['amount'];
     double fraction = (total == 0) ? 0 : amount / total;
-    return Column(
-      children: [
-        Text('\$${data['amount']}'),
-        SizedBox(
-          height: 4,
-        ),
-        Container(
-          height: 60,
-          width: 10,
-          child: Stack(children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(5),
-                ),
-                border: Border.all(
-                  color: Colors.grey,
-                  width: 1,
-                ),
-              ),
-            ),
-            FractionallySizedBox(
-              heightFactor: fraction,
-              child: Container(
+    return Flexible(
+      fit: FlexFit.tight,
+      child: Column(
+        children: [
+          FittedBox(child: Text('\$${data['amount']}')),
+          SizedBox(
+            height: 4,
+          ),
+          Container(
+            height: 60,
+            width: 10,
+            child: Stack(children: [
+              Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(5),
+                  ),
                   border: Border.all(
                     color: Colors.grey,
                     width: 1,
                   ),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(5),
+                ),
+              ),
+              FractionallySizedBox(
+                heightFactor: fraction,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                    border: Border.all(
+                      color: Colors.grey,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(5),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ]),
-        ),
-        SizedBox(
-          height: 4,
-        ),
-        Text(data['day'] as String),
-      ],
+            ]),
+          ),
+          SizedBox(
+            height: 4,
+          ),
+          Text(data['day'] as String),
+        ],
+      ),
     );
   }
 }

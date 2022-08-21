@@ -19,12 +19,18 @@ class _HomePageState extends State<HomePage> {
         });
   }
 
-  void addTransaction(String title, double amount) {
+  void deleteTX(int id) {
+    setState(() {
+      transactions.removeWhere((element) => element.id == id);
+    });
+  }
+
+  void addTransaction(String title, double amount, DateTime date) {
     setState(() {
       this.transactions.add(Transaction(
           id: transactions.isEmpty ? 1 : this.transactions.last.id + 1,
           title: title,
-          date: DateTime.now(),
+          date: date,
           amount: amount));
     });
     Navigator.of(context).pop();
@@ -58,7 +64,10 @@ class _HomePageState extends State<HomePage> {
         children: [
           Chart(transactions),
           //  NewTX(addTransaction, transactions),
-          TXS(transactions),
+          TXS(
+            transactions,
+            deleteTX,
+          ),
         ],
       ),
     );

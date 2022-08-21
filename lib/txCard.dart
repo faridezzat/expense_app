@@ -4,8 +4,11 @@ import 'package:intl/intl.dart';
 
 class TXCard extends StatelessWidget {
   Transaction transaction;
-
-  TXCard(this.transaction);
+  Function deleteTx;
+  TXCard(
+    this.transaction,
+    this.deleteTx,
+  );
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -32,7 +35,9 @@ class TXCard extends StatelessWidget {
           DateFormat.yMd().format(transaction.date),
         ),
         trailing: IconButton(
-          onPressed: () {},
+          onPressed: () => deleteTx(
+            transaction.id,
+          ),
           icon: Icon(
             Icons.delete_rounded,
           ),

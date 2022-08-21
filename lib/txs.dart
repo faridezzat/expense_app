@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 class TXS extends StatelessWidget {
   List<Transaction> transactions;
-  TXS(this.transactions);
+  Function deleteTx;
+  TXS(this.transactions, this.deleteTx);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class TXS extends StatelessWidget {
             )
           : ListView.builder(
               itemBuilder: (ctx, index) {
-                return TXCard(transactions.elementAt(index));
+                return TXCard(transactions.elementAt(index), deleteTx);
               },
               itemCount: transactions.length,
             ),

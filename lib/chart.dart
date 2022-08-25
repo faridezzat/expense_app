@@ -37,19 +37,21 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Container(
-        margin: EdgeInsets.all(10),
-        width: double.infinity,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: data.map((e) {
-            return Bar(
-              data: e,
-              total: totals,
-            );
-          }).toList(),
+    return Container(
+      child: Card(
+        elevation: 5,
+        child: Container(
+          margin: EdgeInsets.all(10),
+          width: double.infinity,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: data.map((e) {
+              return Bar(
+                data: e,
+                total: totals,
+              );
+            }).toList(),
+          ),
         ),
       ),
     );

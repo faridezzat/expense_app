@@ -9,30 +9,34 @@ class TXS extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 350,
-      child: transactions.isEmpty
-          ? Column(
-              children: [
-                Text(
-                  'No Transations Added yet !',
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                Container(
-                  height: 300,
-                  child: Image.asset(
-                    'assets/images/waiting.png',
-                    fit: BoxFit.cover,
+    return transactions.isEmpty
+        ? LayoutBuilder(
+            builder: (context, constraints) {
+              return Column(
+                children: [
+                  Text(
+                    'No Transations Added yet !',
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
-                ),
-              ],
-            )
-          : ListView.builder(
-              itemBuilder: (ctx, index) {
-                return TXCard(transactions.elementAt(index), deleteTx);
-              },
-              itemCount: transactions.length,
-            ),
-    );
+                  Center(
+                    child: Container(
+                      // alignment: Alignment.center,
+                      height: constraints.maxHeight * .7,
+                      child: Image.asset(
+                        'assets/images/waiting.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
+          )
+        : ListView.builder(
+            itemBuilder: (ctx, index) {
+              return TXCard(transactions.elementAt(index), deleteTx);
+            },
+            itemCount: transactions.length,
+          );
   }
 }
